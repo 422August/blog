@@ -1,5 +1,5 @@
 const siteUrl = (
-  "https://august0422.tech"
+  "https://blog.august0422.com"
 ).replace(/\/$/, "");
 
 export const SITE = {
