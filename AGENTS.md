@@ -200,7 +200,7 @@ These instructions apply to all Astro theme work. Prioritize clean, reusable, ac
 
 Before considering work complete, verify:
 
-* The project builds successfully.
+* Run `npm run build` only when modifying major structure (such as build config, routing, content schemas, layouts, CSS pipeline, or dependencies); skip builds for routine copy or content edits.
 * Pages render without console errors.
 * No unnecessary client JavaScript is shipped.
 * Navigation works with keyboard only.
@@ -237,3 +237,9 @@ Before considering work complete, verify:
 ## Preferred Outcome
 
 The final Astro theme should be fast, accessible, SEO-ready, easy to customize, and pleasant to maintain. It should provide strong defaults while staying lightweight and flexible.
+
+## Project Workflow & Deployment
+
+* **Commit and Push by Default**: After completing requested edits in this repository, commit the changes and run `git push` automatically (using the SSH remote `git@github.com:422August/blog.git`) unless the user explicitly asks not to.
+* **Build Only for Structural Changes**: Do not run `npm run build` for routine copy, frontmatter, or content updates. Only run a build when modifying major structure (build configuration, routing, content schemas, layouts, CSS pipeline, or dependencies).
+* **Vercel Root-Domain Config**: This site deploys at the root of `https://blog.august0422.com/`. Do not set a subpath `base` (such as `/blog`) in `astro.config.mjs`, and keep `site` in `astro.config.mjs` and `siteUrl` in `src/config/theme.config.ts` aligned to `https://blog.august0422.com`.
