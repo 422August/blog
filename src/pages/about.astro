@@ -2,6 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { SITE, authors } from "../lib/blog-data.js";
+
+const competitionsAndCerts = [
+  { category: "資訊", name: "大學程式設計先修檢測識讀題", result: "4 級分" },
+  { category: "資訊", name: "大學程式設計先修檢測實作題", result: "2 級分" },
+  { category: "資訊", name: "國立成功大學高中生邀請賽", result: "第 47 名" },
+  { category: "資訊", name: "國立陽明交大附中清華大學資工微課程", result: "優勝" },
+  { category: "資訊", name: "Kaggle: Predicting Smartphone Addiction", result: "0.96 分" },
+  { category: "資訊", name: "資訊學科能力競賽校內初賽", result: "優等" },
+];
 ---
 
 <BaseLayout
@@ -31,6 +40,30 @@ import { SITE, authors } from "../lib/blog-data.js";
         <li>初階程式設計第一名、微控制器應用第一名、進階程式設計第八名</li>
         <li>APCS 觀念 4 級分 / 實作 2 級分</li>
       </ul>
+
+      <h2 id="competitions">競賽、證照經歷</h2>
+      <div class="my-5 overflow-x-auto rounded-lg border border-border">
+        <table class="w-full border-collapse text-left text-sm sm:text-base">
+          <thead class="border-b border-border bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
+            <tr>
+              <th scope="col" class="px-4 py-3 font-medium whitespace-nowrap">類別</th>
+              <th scope="col" class="px-4 py-3 font-medium">名稱</th>
+              <th scope="col" class="px-4 py-3 font-medium whitespace-nowrap">名次／分數</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            {
+              competitionsAndCerts.map((item) => (
+                <tr>
+                  <td class="px-4 py-3 text-muted-foreground whitespace-nowrap">{item.category}</td>
+                  <td class="px-4 py-3 font-medium text-foreground">{item.name}</td>
+                  <td class="px-4 py-3 text-foreground/90 whitespace-nowrap">{item.result}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <section class="mt-12 border-t border-border pt-10">
