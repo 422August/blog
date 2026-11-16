@@ -3,13 +3,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { SITE, authors } from "../lib/blog-data.js";
 
-const competitionsAndCerts = [
-  { category: "資訊", name: "大學程式設計先修檢測識讀題", result: "4 級分" },
-  { category: "資訊", name: "大學程式設計先修檢測實作題", result: "2 級分" },
-  { category: "資訊", name: "國立成功大學高中生邀請賽", result: "第 47 名" },
-  { category: "資訊", name: "國立陽明交大附中清華大學資工微課程", result: "優勝" },
-  { category: "資訊", name: "Kaggle: Predicting Smartphone Addiction", result: "0.96 分" },
-  { category: "資訊", name: "資訊學科能力競賽校內初賽", result: "優等" },
+const experienceTables = [
+  {
+    id: "competitions",
+    title: "競賽、證照經歷",
+    columns: [
+      { label: "類別", className: "text-muted-foreground whitespace-nowrap" },
+      { label: "名稱", className: "font-medium text-foreground" },
+      { label: "名次／分數", className: "text-foreground/90 whitespace-nowrap" },
+    ],
+    rows: [
+      ["資訊", "大學程式設計先修檢測識讀題", "4 級分"],
+      ["資訊", "大學程式設計先修檢測實作題", "2 級分"],
+      ["資訊", "國立成功大學高中生邀請賽", "第 47 名"],
+      ["資訊", "國立陽明交大附中清華大學資工微課程", "優勝"],
+      ["資訊", "Kaggle: Predicting Smartphone Addiction", "0.96 分"],
+      ["資訊", "資訊學科能力競賽校內初賽", "優等"],
+    ],
+  },
+  {
+    id: "projects",
+    title: "專題研究、專案",
+    columns: [
+      { label: "類別", className: "text-muted-foreground whitespace-nowrap" },
+      { label: "專題名稱", className: "font-medium text-foreground" },
+    ],
+    rows: [
+      ["資訊", "國立陽明交大附中返校打掃管理系統"],
+      ["法政", "小論文：廢不廢？考試院與監察院於我國之存廢爭議"],
+      ["資訊", "學術單字增強器"],
+      ["資訊", "電腦活動監控工具"],
+      ["資訊", "團購社團輔助工具"],
+      ["資訊+社會", "利用NLP進行新聞立場分析"],
+      ["資訊", "命令列式讀書時間紀錄工具"],
+      ["資訊", "個人部落格建置與維護"],
+      ["資訊", "會議記錄生成器"],
+      ["資訊+社會", "立法院歷屆問政檢索系統"],
+    ],
+  },
 ];
 ---
 
@@ -41,29 +72,37 @@ const competitionsAndCerts = [
         <li>APCS 觀念 4 級分 / 實作 2 級分</li>
       </ul>
 
-      <h2 id="competitions">競賽、證照經歷</h2>
-      <div class="my-5 overflow-x-auto rounded-lg border border-border">
-        <table class="w-full border-collapse text-left text-sm sm:text-base">
-          <thead class="border-b border-border bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
-            <tr>
-              <th scope="col" class="px-4 py-3 font-medium whitespace-nowrap">類別</th>
-              <th scope="col" class="px-4 py-3 font-medium">名稱</th>
-              <th scope="col" class="px-4 py-3 font-medium whitespace-nowrap">名次／分數</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-border">
-            {
-              competitionsAndCerts.map((item) => (
-                <tr>
-                  <td class="px-4 py-3 text-muted-foreground whitespace-nowrap">{item.category}</td>
-                  <td class="px-4 py-3 font-medium text-foreground">{item.name}</td>
-                  <td class="px-4 py-3 text-foreground/90 whitespace-nowrap">{item.result}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
+      {
+        experienceTables.map((table) => (
+          <>
+            <h2 id={table.id}>{table.title}</h2>
+            <div class="my-5 overflow-x-auto rounded-lg border border-border">
+              <table class="w-full border-collapse text-left text-sm sm:text-base">
+                <thead class="border-b border-border bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    {table.columns.map((col) => (
+                      <th scope="col" class="px-4 py-3 font-medium whitespace-nowrap">
+                        {col.label}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                  {table.rows.map((row) => (
+                    <tr>
+                      {row.map((cell, index) => (
+                        <td class={`px-4 py-3 ${table.columns[index].className}`}>
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        ))
+      }
     </div>
 
     <section class="mt-12 border-t border-border pt-10">
