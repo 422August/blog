@@ -5,6 +5,21 @@ import { SITE, authors } from "../lib/blog-data.js";
 
 const experienceTables = [
   {
+    id: "grades",
+    title: "修課成績",
+    columns: [
+      { label: "科目", className: "font-medium text-foreground" },
+      { label: "名次", className: "text-foreground/90 whitespace-nowrap" },
+    ],
+    rows: [
+      ["資訊科技（部定必修）", "1/246"],
+      ["初階程式設計（多元選修）", "1/49"],
+      ["微控制器應用（多元選修）", "1/20"],
+      ["進階程式設計（多元選修）", "8/24"],
+      ["機器人專題（多元選修）", "7/20"],
+    ],
+  },
+  {
     id: "competitions",
     title: "競賽、證照經歷",
     columns: [
@@ -13,8 +28,8 @@ const experienceTables = [
       { label: "名次／分數", className: "text-foreground/90 whitespace-nowrap" },
     ],
     rows: [
-      ["資訊", "大學程式設計先修檢測識讀題", "4 級分"],
-      ["資訊", "大學程式設計先修檢測實作題", "2 級分"],
+      ["資訊", "大學程式設計先修檢測（APCS）識讀題", "4 級分"],
+      ["資訊", "大學程式設計先修檢測（APCS）實作題", "2 級分"],
       ["資訊", "國立成功大學高中生邀請賽", "第 47 名"],
       ["資訊", "國立陽明交大附中清華大學資工微課程", "優勝"],
       ["資訊", "Kaggle: Predicting Smartphone Addiction", "0.96 分"],
@@ -67,9 +82,6 @@ const experienceTables = [
       <ul>
         <li>軟體研究社社長</li>
         <li>服裝儀容委員會學生代表</li>
-        <li>部定必修資訊科技第一名</li>
-        <li>初階程式設計第一名、微控制器應用第一名、進階程式設計第八名</li>
-        <li>APCS 觀念 4 級分 / 實作 2 級分</li>
       </ul>
 
       {
